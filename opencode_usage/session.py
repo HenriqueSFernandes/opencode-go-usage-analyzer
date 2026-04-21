@@ -13,7 +13,7 @@ def load_session() -> tuple[str, str] | None:
 
     try:
         payload = json.loads(SESSION_PATH.read_text(encoding="utf-8"))
-    except json.JSONDecodeError, OSError:
+    except (json.JSONDecodeError, OSError):
         return None
 
     workspace_id = str(payload.get("workspace_id", "")).strip()

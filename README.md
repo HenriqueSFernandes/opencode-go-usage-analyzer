@@ -63,19 +63,6 @@ uv run opencode-usage --help
 uv build
 ```
 
-### Publish
-
-```bash
-uv build
-uv publish
-```
-
-Use TestPyPI first if desired:
-
-```bash
-uv publish --repository testpypi
-```
-
 ### License
 
 MIT. See `LICENSE`.
