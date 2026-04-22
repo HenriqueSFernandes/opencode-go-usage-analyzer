@@ -32,6 +32,45 @@ uv sync
 uv run opencode-usage --help
 ```
 
+#### With Nix (flake)
+
+Run directly without installing:
+
+```bash
+nix run github:henriqueSFernandes/opencode-go-usage-analyzer -- --help
+```
+
+Install imperatively to your user profile:
+
+```bash
+nix profile install github:henriqueSFernandes/opencode-go-usage-analyzer
+```
+
+Add to a NixOS or Home Manager flake (declarative):
+
+```nix
+# flake.nix
+{
+  inputs.opencode-go-usage-analyzer.url = "github:henriqueSFernandes/opencode-go-usage-analyzer";
+
+  outputs = { self, nixpkgs, home-manager, opencode-go-usage-analyzer, ... }@inputs: {
+    # ...
+  };
+}
+```
+
+Then in your Home Manager configuration:
+
+```nix
+{ config, pkgs, inputs, ... }:
+
+{
+  home.packages = [
+    inputs.opencode-go-usage-analyzer.packages.${pkgs.system}.default
+  ];
+}
+```
+
 ### Usage
 
 ```bash
